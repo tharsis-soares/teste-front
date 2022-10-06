@@ -9,17 +9,24 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
+
+  seasons: string[] = ['Padrão', '50 linhas'];
+
+  checked = false;
+  indeterminate = false;
+  labelPosition: 'before' | 'after' = 'after';
+  disabled = false;
+
   title = 'test';
   dataSource: any = [];
   resultsLength = 0;
-  columnsToDisplay = ['name','username','email', 'website', 'actions'];
-  dataSourceDC = ['name','username','email', 'website', 'actions'];
+  columnsToDisplay = ['name','email','client','username', 'actions'];
+  dataSourceDC = ['name','email', 'client', 'username', 'actions'];
   dataColumns = [
     {id: 'name', name: 'Nome', order: 0, selected: this.isColumnSelected('name')},
-    {id: 'username', name: 'Username', order: 1, selected: this.isColumnSelected('username')},
     {id: 'email', name: 'Email', order: 2, selected: this.isColumnSelected('email')},
-    {id: 'website', name: 'Website', order: 3, selected: this.isColumnSelected('website')},
-    {id: 'actions', name: 'Ações', order: 3, selected: this.isColumnSelected('actions')},
+    {id: 'client', name: 'Cliente', order: 1, selected: this.isColumnSelected('client')},
+    {id: 'username', name: 'Perfil de Acesso', order: 3, selected: this.isColumnSelected('username')},
 ];
 
   selectionCols: SelectionModel<any> = new SelectionModel<any>(true, this.dataColumns.filter((item) => {
@@ -55,7 +62,8 @@ isColumnSelected(col: any) {
   constructor(private service : DataService){}
   ngAfterViewInit(): void {
     this.service.getUsers().subscribe((response) => {
-      this.dataSource = response;
+      this.dataSource = response,
+      console.log(response);
     })
 
     this.selectionCols.changed.subscribe((item) => {
@@ -77,7 +85,6 @@ isColumnSelected(col: any) {
   })
     throw new Error('Method not implemented.');
   }
-
   /*ngOnInit(){
     this.service.getUsers().subscribe((response) => {
       this.dataSource = response;

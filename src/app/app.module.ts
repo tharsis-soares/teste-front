@@ -12,6 +12,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatToolbarModule} from '@angular/material/toolbar';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,10 @@ import { MatToolbarModule} from '@angular/material/toolbar';
     MatBadgeModule,
     MatCheckboxModule,
     MatDividerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatRadioModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
