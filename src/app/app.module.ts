@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu'
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatBadgeModule,
     MatCheckboxModule,
     MatDividerModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

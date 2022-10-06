@@ -1,66 +1,96 @@
 <div class="container">
-  <section>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <button matTooltip="Escolher as colunas visíveis" [matMenuTriggerFor]="columns"
-                                    mat-icon-button class="" aria-label="Colunas">
-                                <mat-icon [matBadge]="selectionCols.selected.length"
-                                          [matBadgeHidden]="isAllColsSelected()" matBadgeSize="small"
-                                          [matBadgeColor]="'accent'">vertical_split
-                                </mat-icon>
-                            </button>
+  <p>
+    <mat-toolbar class="toolbar">
+      <span>Usuários</span>
+      <span class="example-spacer"></span>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <button
+            matTooltip="Escolher as colunas visíveis"
+            [matMenuTriggerFor]="columns"
+            mat-icon-button
+            class=""
+            aria-label="Colunas"
+          >
+            <mat-icon
+              [matBadge]="selectionCols.selected.length"
+              [matBadgeHidden]="isAllColsSelected()"
+              matBadgeSize="small"
+              [matBadgeColor]="'accent'"
+              >vertical_split
+            </mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
+    </mat-toolbar>
+  </p>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef> UserName </th>
-        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="website">
-        <th mat-header-cell *matHeaderCellDef> Website </th>
-        <td mat-cell *matCellDef="let element"> {{element.website}} </td>
-      </ng-container>
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Ações</th>
-        <td mat-cell *matCellDef="let row" class="pr-0 text-right">
-            <button mat-icon-button class="button" [matMenuTriggerFor]="menu" aria-label="Ações">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-
-            </mat-menu>
-        </td>
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="dataSourceDC; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: dataSourceDC;"></tr>
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>UserName</th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
 
-      <!--tr mat-header-row *matHeaderRowDef="columnsToDisplay"></!tr>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="website">
+      <th mat-header-cell *matHeaderCellDef>Website</th>
+      <td mat-cell *matCellDef="let element">{{ element.website }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let row" class="pr-0 text-right">
+        <button
+          mat-icon-button
+          class="button"
+          [matMenuTriggerFor]="menu"
+          aria-label="Ações"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu"> </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="dataSourceDC; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: dataSourceDC"></tr>
+
+    <!--tr mat-header-row *matHeaderRowDef="columnsToDisplay"></!tr>
       <tr-- mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr-->
-    </table>
-  </div>
-  <mat-menu #columns="matMenu">
-    <button mat-menu-item type="button" (click)="$event.stopPropagation()">
-        <mat-checkbox color="primary" [id]="'all'" (change)="$event ? masterToggle() : null"
-                      [checked]="selectionCols.hasValue() && isAllColsSelected()"
-                      [indeterminate]="selectionCols.hasValue() && !isAllColsSelected()">Todas
-        </mat-checkbox>
-    </button>
-    <mat-divider></mat-divider>
-    <button *ngFor="let col of dataColumns" mat-menu-item type="button" (click)="$event.stopPropagation()">
-        <mat-checkbox color="primary" [id]="col.id" (change)="$event ? selectionCols.toggle(col) : null"
-                      [checked]="selectionCols.isSelected(col)">{{col.name}}</mat-checkbox>
-    </button>
+  </table>
+</div>
+<mat-menu #columns="matMenu">
+  <button mat-menu-item type="button" (click)="$event.stopPropagation()">
+    <mat-checkbox
+      color="primary"
+      [id]="'all'"
+      (change)="$event ? masterToggle() : null"
+      [checked]="selectionCols.hasValue() && isAllColsSelected()"
+      [indeterminate]="selectionCols.hasValue() && !isAllColsSelected()"
+      >Todas
+    </mat-checkbox>
+  </button>
+  <mat-divider></mat-divider>
+  <button
+    *ngFor="let col of dataColumns"
+    mat-menu-item
+    type="button"
+    (click)="$event.stopPropagation()"
+  >
+    <mat-checkbox
+      color="primary"
+      [id]="col.id"
+      (change)="$event ? selectionCols.toggle(col) : null"
+      [checked]="selectionCols.isSelected(col)"
+      >{{ col.name }}</mat-checkbox
+    >
+  </button>
 </mat-menu>
