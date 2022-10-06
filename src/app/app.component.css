@@ -5,3 +5,12 @@
   margin-top: 80px;
   flex-direction: column;
 }
+
+.button {
+  border: none;
+  background-color: white;
+}
+
+.button-col {
+  background-color: black;
+}

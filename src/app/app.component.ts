@@ -12,13 +12,14 @@ export class AppComponent implements AfterViewInit {
   title = 'test';
   dataSource: any = [];
   resultsLength = 0;
-  columnsToDisplay = ['name','username','email', 'website'];
-  dataSourceDC = ['name','username','email', 'website'];
+  columnsToDisplay = ['name','username','email', 'website', 'actions'];
+  dataSourceDC = ['name','username','email', 'website', 'actions'];
   dataColumns = [
     {id: 'name', name: 'Nome', order: 0, selected: this.isColumnSelected('name')},
     {id: 'username', name: 'Username', order: 1, selected: this.isColumnSelected('username')},
     {id: 'email', name: 'Email', order: 2, selected: this.isColumnSelected('email')},
     {id: 'website', name: 'Website', order: 3, selected: this.isColumnSelected('website')},
+    {id: 'actions', name: 'Ações', order: 3, selected: this.isColumnSelected('actions')},
 ];
 
   selectionCols: SelectionModel<any> = new SelectionModel<any>(true, this.dataColumns.filter((item) => {
