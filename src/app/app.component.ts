@@ -23,7 +23,7 @@ export class AppComponent implements AfterViewInit {
   columnsToDisplay = ['name','email','client','username', 'actions'];
   dataSourceDC = ['name','email', 'client', 'username', 'actions'];
   dataColumns = [
-    {id: 'name', name: 'Nome', order: 0, selected: this.isColumnSelected('name')},
+    {id: 'name', name: 'Usuário', order: 0, selected: this.isColumnSelected('name')},
     {id: 'email', name: 'Email', order: 2, selected: this.isColumnSelected('email')},
     {id: 'client', name: 'Cliente', order: 1, selected: this.isColumnSelected('client')},
     {id: 'username', name: 'Perfil de Acesso', order: 3, selected: this.isColumnSelected('username')},
@@ -91,4 +91,7 @@ isColumnSelected(col: any) {
     })
   }
 */
+console(e: any) {
+  console.log(e)
+}
 }

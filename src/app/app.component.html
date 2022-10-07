@@ -54,7 +54,7 @@
           [matMenuTriggerFor]="menu"
           aria-label="Ações"
         >
-          <mat-icon>more_vert</mat-icon>
+          <mat-icon class="color">more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu"> </mat-menu>
       </td>
@@ -79,17 +79,19 @@
 <mat-divider></mat-divider>
   <p class="head-menu">Colunas</p>
   <button
+  class="new-button"
     *ngFor="let col of dataColumns"
     mat-menu-item
-    type="button"
-    (click)="$event.stopPropagation()"
+    (click)="$event ? selectionCols.toggle(col) : null;"
   >
     <mat-checkbox
       color="primary"
       [id]="col.id"
-      (change)="$event ? selectionCols.toggle(col) : null"
+
       [checked]="selectionCols.isSelected(col)"
-      >{{ col.name }}</mat-checkbox
+      ><span class="form-label-forced-span">
+        {{ col.name }}
+      </span></mat-checkbox
     >
   </button>
 </mat-menu>
